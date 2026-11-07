@@ -17,21 +17,23 @@ describe('Perfil Profesional App - Carol Cervantes Acosta', () => {
     expect(wrapper.text()).toContain('Mi Repositorio GitHub');
   });
 
-  test('LikeDislikeCounter.vue maneja la reactividad de me gusta y no me gusta', async () => {
+  test('LikeDislikeCounter.vue inicia en 0 y maneja la reactividad de me gusta y no me gusta', async () => {
     const wrapper = mount(LikeDislikeCounter);
     expect(wrapper.text()).toContain('Me Gusta');
     expect(wrapper.text()).toContain('No Me Gusta');
+    expect(wrapper.text()).toContain('Total de reacciones: 0');
 
     const buttons = wrapper.findAll('ion-button');
     expect(buttons.length).toBeGreaterThanOrEqual(2);
 
     // Voto positivo
     await buttons[0].trigger('click');
-    expect(wrapper.text()).toContain('19'); // 18 + 1
+    expect(wrapper.text()).toContain('Total de reacciones: 1');
+    expect(wrapper.text()).toContain('Aprobación: 100%');
 
-    // Voto negativo
+    // Voto negativo (cambio de voto)
     await buttons[1].trigger('click');
-    expect(wrapper.text()).toContain('18'); // se descuenta el like
-    expect(wrapper.text()).toContain('2');  // 1 + 1 dislike
+    expect(wrapper.text()).toContain('Total de reacciones: 1');
+    expect(wrapper.text()).toContain('Aprobación: 0%');
   });
 });

@@ -1,8 +1,8 @@
 <template>
   <ion-page>
     <!-- Encabezado Superior -->
-    <ion-header :translucent="true">
-      <ion-toolbar color="light" class="main-toolbar">
+    <ion-header :translucent="false">
+      <ion-toolbar class="main-toolbar">
         <ion-title class="app-title">Hoja de Vida &bull; Perfil Profesional</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -187,7 +187,7 @@
           </ion-card-content>
         </ion-card>
 
-        <!-- 6. CONTADOR REACTIVO DE ME GUSTA / NO ME GUSTA (MANITOS) -->
+        <!-- 6. CONTADOR REACTIVO DE ME GUSTA / NO ME GUSTA (MANITOS EN 0) -->
         <LikeDislikeCounter />
 
       </div>
@@ -195,7 +195,7 @@
 
     <!-- 7. BARRITA DE ESTADO (STATUS BAR) CON ENLACE A REPOSITORIO DE GITHUB -->
     <ion-footer class="custom-footer-status">
-      <ion-toolbar color="light">
+      <ion-toolbar class="footer-toolbar">
         <div class="footer-status-bar">
           <div class="footer-left">
             <span class="status-dot"></span>
@@ -318,7 +318,8 @@ const experiencia = reactive([
 <style scoped>
 /* Contenedor general */
 .page-content {
-  --background: #f8fafc;
+  --background: #f1f5f9;
+  background-color: #f1f5f9;
 }
 
 .resume-wrapper {
@@ -328,58 +329,61 @@ const experiencia = reactive([
 }
 
 .main-toolbar {
-  --border-color: #e2e8f0;
+  --background: #ffffff;
+  background: #ffffff;
+  --border-color: #cbd5e1;
+  border-bottom: 1px solid #cbd5e1;
 }
 
 .app-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a !important;
   letter-spacing: -0.3px;
 }
 
 /* 1. Encabezado de Identidad */
 .profile-header {
   text-align: center;
-  padding: 28px 16px 16px 16px;
+  padding: 28px 16px 20px 16px;
   background-color: #ffffff;
   border-radius: 16px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
 }
 
 .avatar-initials {
-  width: 84px;
-  height: 84px;
+  width: 86px;
+  height: 86px;
   margin: 0 auto 14px auto;
   border-radius: 50%;
   background: linear-gradient(135deg, #1e3a8a, #2563eb);
-  color: #ffffff;
+  color: #ffffff !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 2.1rem;
   font-weight: 800;
   letter-spacing: 1px;
   box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
 }
 
 .student-name {
-  font-size: 1.85rem;
+  font-size: 1.95rem;
   font-weight: 800;
-  color: #0f172a;
+  color: #0f172a !important;
   margin: 0;
   line-height: 1.25;
   letter-spacing: -0.5px;
 }
 
 .student-headline {
-  font-size: 1rem;
-  color: #475569;
-  margin: 8px auto 14px auto;
-  max-width: 580px;
-  line-height: 1.45;
-  font-weight: 500;
+  font-size: 1.05rem;
+  color: #1e293b !important;
+  margin: 8px auto 16px auto;
+  max-width: 600px;
+  line-height: 1.5;
+  font-weight: 600;
 }
 
 .identity-tag-wrapper {
@@ -394,111 +398,113 @@ const experiencia = reactive([
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 12px;
-  background-color: #f1f5f9;
-  color: #334155;
+  padding: 6px 14px;
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
   border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  border: 1px solid #e2e8f0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: 1px solid #94a3b8 !important;
 }
 
 /* 2. Separador */
 .divider-area {
-  padding: 10px 0;
+  padding: 12px 0;
 }
 
 .section-divider {
   border: none;
-  height: 1px;
-  background-color: #cbd5e1;
+  height: 2px;
+  background-color: #94a3b8;
   margin: 6px 0;
+  opacity: 0.8;
 }
 
 /* 3. Tarjetas */
 .content-card {
-  margin: 14px 0;
-  background-color: #ffffff;
+  margin: 16px 0;
+  background-color: #ffffff !important;
   border-radius: 14px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
 }
 
 .card-heading {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1.18rem;
-  font-weight: 700;
-  color: #0f172a;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a !important;
 }
 
 .icon-blue {
-  color: #2563eb;
-  font-size: 1.4rem;
+  color: #1d4ed8;
+  font-size: 1.45rem;
 }
 
 .icon-indigo {
-  color: #4f46e5;
-  font-size: 1.4rem;
+  color: #4338ca;
+  font-size: 1.45rem;
 }
 
 .icon-teal {
-  color: #0d9488;
-  font-size: 1.4rem;
+  color: #0f766e;
+  font-size: 1.45rem;
 }
 
-/* Grilla de Datos Personales */
+/* Grilla de Datos Personales con Alto Contraste */
 .personal-info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 12px;
-  padding-top: 4px;
+  padding-top: 6px;
 }
 
 .info-cell {
   background-color: #f8fafc;
-  padding: 10px 14px;
-  border-radius: 8px;
-  border: 1px solid #f1f5f9;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
   display: flex;
   flex-direction: column;
 }
 
 .info-label {
-  font-size: 0.78rem;
-  color: #64748b;
+  font-size: 0.8rem;
+  color: #334155 !important;
   text-transform: uppercase;
-  font-weight: 600;
-  margin-bottom: 2px;
-  letter-spacing: 0.4px;
+  font-weight: 800;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
 }
 
 .info-value {
-  font-size: 0.95rem;
-  color: #1e293b;
+  font-size: 1rem;
+  color: #0f172a !important;
+  font-weight: 700;
 }
 
 .font-semibold {
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .link-text {
-  color: #2563eb;
-  text-decoration: none;
-  font-weight: 500;
+  color: #1d4ed8 !important;
+  text-decoration: underline;
+  font-weight: 700;
 }
 
 .link-text:hover {
-  text-decoration: underline;
+  color: #1e40af !important;
 }
 
 /* Educación */
 .education-block {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 20px;
+  gap: 18px;
+  margin-bottom: 22px;
 }
 
 .education-row {
@@ -508,13 +514,13 @@ const experiencia = reactive([
 }
 
 .edu-marker {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background-color: #2563eb;
+  background-color: #1d4ed8;
   margin-top: 6px;
   flex-shrink: 0;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.25);
 }
 
 .edu-body {
@@ -530,40 +536,41 @@ const experiencia = reactive([
 }
 
 .edu-degree {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #0f172a;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a !important;
   margin: 0;
 }
 
 .edu-badge {
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 3px 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 4px 10px;
   border-radius: 12px;
-  background-color: #f1f5f9;
-  color: #475569;
-  border: 1px solid #e2e8f0;
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  border: 1px solid #94a3b8;
 }
 
 .badge-current {
-  background-color: #ecfdf5;
-  color: #047857;
-  border-color: #a7f3d0;
+  background-color: #dcfce7 !important;
+  color: #14532d !important;
+  border-color: #86efac;
 }
 
 .edu-school {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #2563eb;
-  margin: 3px 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1d4ed8 !important;
+  margin: 4px 0;
 }
 
 .edu-details {
-  font-size: 0.88rem;
-  color: #475569;
-  line-height: 1.4;
-  margin: 4px 0 0 0;
+  font-size: 0.92rem;
+  color: #1e293b !important;
+  line-height: 1.5;
+  margin: 6px 0 0 0;
+  font-weight: 500;
 }
 
 /* Cursos */
@@ -571,42 +578,42 @@ const experiencia = reactive([
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.96rem;
-  font-weight: 700;
-  color: #1e293b;
-  margin: 20px 0 12px 0;
-  border-top: 1px dashed #e2e8f0;
-  padding-top: 16px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a !important;
+  margin: 22px 0 14px 0;
+  border-top: 1px dashed #94a3b8;
+  padding-top: 18px;
 }
 
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 8px;
+  gap: 10px;
 }
 
 .skill-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   background-color: #f8fafc;
-  padding: 8px 12px;
+  padding: 10px 14px;
   border-radius: 8px;
-  border: 1px solid #f1f5f9;
-  font-size: 0.87rem;
-  color: #334155;
-  font-weight: 500;
+  border: 1px solid #cbd5e1;
+  font-size: 0.92rem;
+  color: #0f172a !important;
+  font-weight: 600;
 }
 
 .skill-check {
-  color: #10b981;
-  font-size: 1.1rem;
+  color: #059669;
+  font-size: 1.25rem;
   flex-shrink: 0;
 }
 
 /* Experiencia Laboral */
 .work-card-inner {
-  padding: 4px 0;
+  padding: 6px 0;
 }
 
 .work-header {
@@ -618,71 +625,78 @@ const experiencia = reactive([
 }
 
 .work-role {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #0f172a;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0f172a !important;
   margin: 0;
 }
 
 .work-company {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #0d9488;
-  margin: 3px 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f766e !important;
+  margin: 4px 0;
 }
 
 .work-badge {
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 3px 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 4px 10px;
   border-radius: 12px;
-  background-color: #f0fdfa;
-  color: #0f766e;
-  border: 1px solid #ccfbf1;
+  background-color: #ccfbf1 !important;
+  color: #115e59 !important;
+  border: 1px solid #99f6e4;
 }
 
 .work-desc {
-  font-size: 0.88rem;
-  color: #475569;
-  line-height: 1.45;
-  margin: 8px 0;
+  font-size: 0.92rem;
+  color: #1e293b !important;
+  line-height: 1.5;
+  margin: 10px 0;
+  font-weight: 500;
 }
 
 .work-tasks {
-  margin: 8px 0 14px 18px;
+  margin: 10px 0 16px 20px;
   padding: 0;
-  color: #334155;
-  font-size: 0.87rem;
-  line-height: 1.5;
+  color: #0f172a !important;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  font-weight: 500;
 }
 
 .tags-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
 }
 
 .tech-pill {
-  font-size: 0.78rem;
-  font-weight: 600;
-  background-color: #f1f5f9;
-  color: #334155;
+  font-size: 0.82rem;
+  font-weight: 700;
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
   padding: 4px 10px;
   border-radius: 6px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #cbd5e1;
 }
 
 /* 7. Footer Status Bar */
 .custom-footer-status {
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid #cbd5e1;
   background-color: #ffffff;
+}
+
+.footer-toolbar {
+  --background: #ffffff;
+  background: #ffffff;
 }
 
 .footer-status-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 16px;
+  padding: 8px 16px;
 }
 
 .footer-left {
@@ -692,21 +706,24 @@ const experiencia = reactive([
 }
 
 .status-dot {
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   background-color: #10b981;
   border-radius: 50%;
   display: inline-block;
+  box-shadow: 0 0 6px #10b981;
 }
 
 .status-msg {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #475569;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f172a !important;
 }
 
 .github-btn {
-  font-weight: 600;
+  font-weight: 700;
   --border-radius: 8px;
+  --background: #0f172a;
+  --color: #ffffff;
 }
 </style>

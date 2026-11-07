@@ -38,7 +38,7 @@
         </ion-button>
       </div>
 
-      <!-- Resumen Reactivo -->
+      <!-- Resumen Reactivo con Alto Contraste -->
       <div class="feedback-summary">
         <p v-if="userVote === 'like'" class="feedback-msg positive">
           👍 ¡Muchas gracias por el apoyo!
@@ -77,9 +77,9 @@ import {
   thumbsDownOutline
 } from 'ionicons/icons';
 
-// Estado reactivo con ref()
-const likes = ref<number>(18);
-const dislikes = ref<number>(1);
+// Estado reactivo inicializado en 0 para likes y dislikes
+const likes = ref<number>(0);
+const dislikes = ref<number>(0);
 const userVote = ref<'like' | 'dislike' | null>(null);
 
 // Propiedades computadas
@@ -89,7 +89,7 @@ const approvalRate = computed(() => {
   return Math.round((likes.value / totalVotes.value) * 100);
 });
 
-// Métodos de votación
+// Métodos de votación reactivos
 const voteLike = () => {
   if (userVote.value === 'like') {
     likes.value--;
@@ -120,22 +120,23 @@ const voteDislike = () => {
 <style scoped>
 .reaction-card {
   margin: 16px 0;
-  background-color: #ffffff;
+  background-color: #ffffff !important;
   border-radius: 14px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
 }
 
 .reaction-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #0f172a;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0f172a !important;
 }
 
 .reaction-subtitle {
-  font-size: 0.88rem;
-  color: #64748b;
-  margin-top: 3px;
+  font-size: 0.92rem;
+  color: #334155 !important;
+  margin-top: 4px;
+  font-weight: 500;
 }
 
 .reaction-buttons-container {
@@ -143,51 +144,53 @@ const voteDislike = () => {
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
-  margin: 10px 0;
+  margin: 14px 0;
 }
 
 .vote-btn {
   flex: 1 1 170px;
   max-width: 220px;
   --border-radius: 8px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.2px;
 }
 
 .vote-badge {
   margin-left: 8px;
-  font-weight: 700;
-  padding: 3px 8px;
+  font-weight: 800;
+  padding: 4px 10px;
   border-radius: 10px;
+  font-size: 0.9rem;
 }
 
 .feedback-summary {
   margin-top: 14px;
   text-align: center;
-  border-top: 1px dashed #e2e8f0;
-  padding-top: 10px;
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 12px;
 }
 
 .feedback-msg {
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
   margin: 6px 0;
 }
 
 .feedback-msg.positive {
-  color: #15803d;
+  color: #15803d !important;
 }
 
 .feedback-msg.negative {
-  color: #b91c1c;
+  color: #b91c1c !important;
 }
 
 .feedback-msg.neutral {
-  color: #64748b;
+  color: #334155 !important;
 }
 
 .stats-bar small {
-  color: #94a3b8;
-  font-size: 0.8rem;
+  color: #475569 !important;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 </style>
